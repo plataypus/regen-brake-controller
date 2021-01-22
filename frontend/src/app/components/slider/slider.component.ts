@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WebsocketService} from '../../services/websocket.service';
 
 @Component({
   selector: 'app-slider',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _websocketService: WebsocketService) { }
 
   ngOnInit(): void {
+    this._websocketService.connect()
   }
 
 }
