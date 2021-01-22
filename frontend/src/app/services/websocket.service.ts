@@ -22,7 +22,11 @@ export class WebsocketService {
     }
 
     this.websocket.onmessage = event => {
-       console.log(event)
+      const {eventType, data} = JSON.parse(event.data)
+      switch (eventType){
+        case 'init':
+          this.websocket.send(JSON.stringify({eventType: 'message', data:'hello'}))
+      }
     }
 
     this.websocket.onclose = event => {

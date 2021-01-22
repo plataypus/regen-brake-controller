@@ -1,5 +1,6 @@
 const { Socket } = require("dgram");
 const WebSocket = require("ws");
+const { v4: uuidv4 } = require("uuid");
 
 // const JSONParser = require('./externalSocketParser/parser');
 // const digest  = require('./Digester/index');
@@ -7,7 +8,8 @@ const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 8080, clientTracking: true });
 // var clientList = [];
-const clients = new Map();
+const clientsTypeMapping = new Map();
+const clientsIdMapping = new Map();
 
 //websocket connection
 wss.on("connection", function connection(ws) {
@@ -19,16 +21,19 @@ wss.on("connection", function connection(ws) {
 
 		// Initial connection
 		if (eventType === "connection") {
-			clients.set(clientType, ws);
-			console.log(clients);
-			ws.send("hi");
-
 			//set id for the client
+			const id = uuidv4();
+			ws.id = id;
 
+			clientsTypeMapping.set(clientType, ws);
+			clientsIdMapping.set(id, clientType);
+
+			ws.send(JSON.stringify({ eventType: "init", data: { id } }));
 			//map id to client types
 			//on message -> get id from ws -> get the other client(s) -> send data
+		} else {
+			console.log(clientsIdMapping.get(ws.id));
 		}
-
 		// var parsedData = JSONParser(data);
 
 		// if the socket is just connected, add it to the client list
