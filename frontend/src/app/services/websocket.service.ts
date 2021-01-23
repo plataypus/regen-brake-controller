@@ -18,7 +18,7 @@ export class WebsocketService {
     this.websocket = new WebSocket('ws://localhost:8080');
 
     this.websocket.onopen = event => {
-      this.websocket.send(JSON.stringify({eventType: 'connection', clientType: 'dashboard'}));
+      this.websocket.send(JSON.stringify({eventType: 'connection', data: {clientType: 'dashboard'}}));
     }
 
     this.websocket.onmessage = event => {
