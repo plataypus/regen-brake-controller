@@ -8,10 +8,13 @@ import {WebsocketService} from '../../services/websocket.service';
 })
 export class SliderComponent implements OnInit {
 
-  constructor(private _websocketService: WebsocketService) { }
+  constructor(private wsService: WebsocketService) { }
 
   ngOnInit(): void {
-    this._websocketService.connect()
+    
   }
 
+  onBrake(){
+    this.wsService.brake(1)
+  }
 }

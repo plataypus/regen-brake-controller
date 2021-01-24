@@ -21,8 +21,9 @@ wss.on("connection", function connection(ws) {
 				ws.clientType = data.clientType;
 				ws.send(JSON.stringify({ eventType: "init" }));
 				return;
-			case "message":
-				console.log(ws.clientType);
+			case "brake":
+				const { brakeforce } = data;
+				console.log("braking with force of " + brakeforce);
 				return;
 			default:
 				ws.send(

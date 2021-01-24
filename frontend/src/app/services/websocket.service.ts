@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {webSocket, WebSocketSubject} from 'rxjs/webSocket'
-import { EMPTY, Subject, BehaviorSubject } from 'rxjs'
+// import {webSocket, WebSocketSubject} from 'rxjs/webSocket'
+import {BehaviorSubject } from 'rxjs'
 
 
 @Injectable({
@@ -19,6 +19,7 @@ export class WebsocketService {
 
     this.websocket.onopen = event => {
       this.websocket.send(JSON.stringify({eventType: 'connection', data: {clientType: 'dashboard'}}));
+      console.log('websocket connected')
     }
 
     this.websocket.onmessage = event => {
@@ -32,5 +33,10 @@ export class WebsocketService {
     this.websocket.onclose = event => {
       console.log('disconnected')
     }
+
+  }
+
+  public brake(brakeforce){
+    this.websocket.send(JSON.stringify({eventType: "brake", data: {brakeforce}}))
   }
 }
