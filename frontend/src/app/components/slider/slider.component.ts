@@ -15,6 +15,6 @@ export class SliderComponent implements OnInit {
   }
 
   onBrake(){
-    this.wsService.brake(1)
+    this.wsService.control({type: 'brake', force: 2})
   }
 }

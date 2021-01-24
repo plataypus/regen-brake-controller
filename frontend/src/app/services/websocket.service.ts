@@ -36,7 +36,7 @@ export class WebsocketService {
 
   }
 
-  public brake(brakeforce){
-    this.websocket.send(JSON.stringify({eventType: "brake", data: {brakeforce}}))
+  public control(controlparam){
+    this.websocket.send(JSON.stringify({eventType: "control", data: controlparam}))
   }
 }

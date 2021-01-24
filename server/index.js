@@ -15,15 +15,41 @@ wss.on("connection", function connection(ws) {
 		// parsed incoming data from the clients
 		const { eventType, data } = JSON.parse(message);
 
+		// //actual relay logic
+		// if (eventType === 'connection'){
+		// 	ws.clientType = data.clientType;
+		// 	ws.send(JSON.stringify({ eventType: "init" }));
+		// 	return;
+		// }else{
+		// 	if (ws.clientType === 'dashboard'){
+		// 		wss.clients.forEach(client => {
+		// 			//relay message directly to pod
+		// 			if (client.readyState === WebSocket.OPEN && client.clientType !== 'dashboard'){
+		// 				client.send(message)
+		// 			}
+		// 		})
+		// 	}else{
+		// 		wss.clients.forEach(client => {
+		// 			if (client.readyState === WebSocket.OPEN && client.clientType === 'dashboard'){
+		// 				//digest and encapsulate the message here
+		// 				client.send(message)
+		// 			}
+		// 		})
+		// 	}
+		// }
+
+		//test logic to see ui commands on the server
 		switch (eventType) {
 			// Initial connection
 			case "connection":
 				ws.clientType = data.clientType;
 				ws.send(JSON.stringify({ eventType: "init" }));
 				return;
-			case "brake":
-				const { brakeforce } = data;
-				console.log("braking with force of " + brakeforce);
+			case "control":
+				const { type, force } = data;
+				if (type === "brake") {
+					console.log("braking with force of " + force);
+				}
 				return;
 			default:
 				ws.send(
@@ -34,39 +60,5 @@ wss.on("connection", function connection(ws) {
 				);
 				return;
 		}
-
-		// var parsedData = JSONParser(data);
-
-		// if the socket is just connected, add it to the client list
-		// if (parsedData.isNew) {
-		// 	parsedData["socket"] = ws;
-		// 	clientList.push(parsedData);
-		// } else {
-		// 	clientList.forEach(function each(client) {
-		// 		if (client.socket.readyState === WebSocket.OPEN) {
-		// 			if (parsedData.serverType == "odroid") {
-		// 				// var error = [];
-		// 				// // validation module -- here
-		// 				// // Divide incoming data into multiple components
-		// 				// var Digestor =  digest(parsedData);
-		// 				// // pack all the data to be sent to front-end.
-		// 				// var encapsulator = encapsulate(Digestor, error);
-		// 				// // Send encapsulation data to front-end
-		// 				// clientList.forEach((elem) => {
-		// 				//   if (elem.serverType == 'dashboard') {
-		// 				//     elem.socket.send(JSON.stringify(encapsulator));
-		// 				//   }
-		// 				// });
-		// 			} else {
-		// 				// Send encapsulation data to odroid
-		// 				clientList.forEach((elem) => {
-		// 					if (elem.serverType == "odroid") {
-		// 						elem.socket.send(JSON.stringify(Encapsulation));
-		// 					}
-		// 				});
-		// 			}
-		// 		}
-		// 	});
-		// }
 	});
 });
