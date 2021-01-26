@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { SliderBrakeComponent } from './components/slider-brake/slider-brake.component';
+import { RegenControlComponent } from './components/regen-control/regen-control.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SliderComponent,
-    SliderBrakeComponent
+    SliderBrakeComponent,
+    RegenControlComponent
   ],
   imports: [
     BrowserModule,
