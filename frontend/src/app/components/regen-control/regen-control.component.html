@@ -1,9 +1,9 @@
 <h1>Regenerative Braking</h1>
-<div>
-    <label for="control-type">Control Type:</label>
-</div>
+<label for="control-type">Control Type:</label><br>
 <select id="control-type" name="control-type" (change)="selectUpdate($event)">
     <option *ngFor="let value of controlTypes" value="{{value}}">{{value}}</option>
 </select>
 <app-slider-brake *ngIf="selectedControlType === 'real-time'; else elseBlock"></app-slider-brake>
-<app-slider #elseBlock></app-slider>
+<ng-template #elseBlock>
+    <app-manual-control></app-manual-control>
+</ng-template>

@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { SliderBrakeComponent } from './components/slider-brake/slider-brake.component';
 import { RegenControlComponent } from './components/regen-control/regen-control.component';
+import { ManualControlComponent } from './components/manual-control/manual-control.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SliderComponent,
     SliderBrakeComponent,
-    RegenControlComponent
+    RegenControlComponent,
+    ManualControlComponent
   ],
   imports: [
     BrowserModule,
