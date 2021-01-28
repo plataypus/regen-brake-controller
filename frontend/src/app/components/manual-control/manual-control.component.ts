@@ -25,10 +25,11 @@ export class ManualControlComponent implements OnInit {
   }
 
   torqeUpdate(value: number): void{
+    console.log(typeof value)
     this.torque = value;
-    console.log(this.torque)
   }
   timeUpdate(value: number): void{
+    console.log(typeof value)
     this.time = value;
     console.log(this.time)
   }
