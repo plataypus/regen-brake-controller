@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
@@ -12,15 +12,21 @@ export class SliderComponent implements OnInit {
   @Input() min: number = 0;
   @Input() max: number = 100;
   @Input() unit: string = '';
+  @Output() sliderEvent = new EventEmitter<number>();
   sliderValue: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.sliderValue = this.min
+    this.updateSlider(this.min)
   }
 
   slide(event): void {
-    this.sliderValue = event.target.value;
+    this.updateSlider(event.target.value);
+  }
+
+  updateSlider(value: number): void{
+    this.sliderValue = value
+    this.sliderEvent.emit(value)
   }
 }
