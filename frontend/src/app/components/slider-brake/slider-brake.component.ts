@@ -21,7 +21,7 @@ export class SliderBrakeComponent implements OnInit {
     //Showing the slider value on the page
     (document.getElementById("brakeValue")).innerHTML = brakeValue;
 
-    this.wsService.control({type: 'sliderBrake', force: brakeValue})
+    this.wsService.control({type: 'sliderBrake', params: brakeValue})
   }
 
 

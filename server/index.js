@@ -50,7 +50,7 @@ wss.on("connection", function connection(ws) {
 				if (type === "brake") {
 					console.log(params);
 				} else if (type == "sliderBrake") {
-					console.log(force + "% of maximum braking force");
+					console.log(params + "% of maximum braking force");
 				}
 				return;
 			default:
