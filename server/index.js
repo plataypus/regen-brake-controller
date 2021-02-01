@@ -37,7 +37,7 @@ wss.on("connection", function connection(ws) {
 		// 		})
 		// 	}
 		// }
-
+		//
 		//test logic to see ui commands on the server
 		switch (eventType) {
 			// Initial connection

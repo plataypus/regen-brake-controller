@@ -7,6 +7,7 @@ import {WebsocketService} from '../../services/websocket.service';
   styleUrls: ['./slider-brake.component.scss']
 })
 export class SliderBrakeComponent implements OnInit {
+  sliderValue: number = 0;
 
   constructor(private wsService: WebsocketService) { }
 
@@ -14,14 +15,9 @@ export class SliderBrakeComponent implements OnInit {
    
   }
 
-  sliderValue(){
-    //Taking in value of slider
-    var brakeValue = (<HTMLInputElement>document.getElementById("brakePercent")).value;
-    
-    //Showing the slider value on the page
-    (document.getElementById("brakeValue")).innerHTML = brakeValue;
-
-    this.wsService.control({type: 'sliderBrake', params: brakeValue})
+  slider(event): void{
+    this.sliderValue = parseInt(event.target.value);
+    this.wsService.control({type: 'sliderBrake', params: this.sliderValue})
   }
 
 
