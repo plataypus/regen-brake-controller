@@ -1,8 +1,14 @@
 <div>
     <p class = 'info'>Braking is engaged when slider value is non-zero</p>
     <div style="display: inline;" class="slidecontainer">
-        <input type="range" min="0" max="100" value={{sliderValue}} id="brakePercent" (input) = "slider($event)">
+        <input type="range" min="0" max="100" value={{sliderValue}} id="brakePercent" (input) = "slider($event)" (mouseup) ="newFunc($event)">
     </div>
     <p style="display:inline;"> {{sliderValue}} %</p>
+    <div style="padding-top: 3.5%;">
+        <input type="checkbox" id ="pedalMode" name="pedalMode" style="zoom: 95%;" (input) = "pedalFunc($event)">
+        <label for="pedalMode" style="padding-left:5% ;">Pedal Mode</label>
+
+    </div>
+   
 </div>
 
