@@ -1,3 +1,7 @@
-<label for={{id}}>{{label}}</label><br>
-<input type="range" id={{id}} (input)="slide($event)" value={{sliderValue}} min={{min}} max={{max}} [disabled]="isDisabled"/>
-<p>{{sliderValue}} {{unit}}</p>
+<div class='container'>
+    <label for={{id}}>{{label}}</label><br>
+    <div class="slidercontainer">
+        <input type="range" id={{id}} (input)="slide($event)" value={{sliderValue}} min={{min}} max={{max}} [disabled]="isDisabled"/>
+        <p>{{sliderValue}} {{unit}}</p>
+    </div>
+</div>

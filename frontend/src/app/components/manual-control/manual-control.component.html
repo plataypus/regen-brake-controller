@@ -1,7 +1,9 @@
-<div>
-    <input type="checkbox" id='ramp' name='ramp' (input)="rampToggle($event)"/>
-    <label for='ramp'>Ramp mode</label><br>
-    <app-slider label='Brake torque' id='torque' max={{20}} [unit]="'Nm'" (sliderEvent)="torqeUpdate($event)"></app-slider>
-    <app-slider label='Ramp time' id='ramp-time' [isDisabled]="!isRamp" [min]='1' [max]='10' [unit]="'sec'" (sliderEvent)="timeUpdate($event)"></app-slider>
-    <button (click)="onBrake()">Brake</button>
-</div>
+<app-slider label='Brake torque' id='torque' max={{20}} [unit]="'Nm'" (sliderEvent)="torqeUpdate($event)"></app-slider>
+<app-slider label='Ramp time' id='ramp-time' [isDisabled]="!isRamp" [min]='1' [max]='10' [unit]="'sec'" (sliderEvent)="timeUpdate($event)"></app-slider>
+
+<input type="checkbox" id='ramp' name='ramp' (input)="rampToggle($event)"/>
+<label for='ramp' style='margin-left: 0.5rem;'>Ramp mode</label><br>
+
+
+<button (click)="onBrake()">Brake</button>
+

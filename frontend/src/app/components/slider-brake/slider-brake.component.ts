@@ -26,7 +26,6 @@ export class SliderBrakeComponent implements OnInit {
 
   newFunc(event): void{
     if(this.pedalModeVal){
-      console.log(event.target.value)
       let i: number = event.target.value;
       while(i>-1){
         event.target.value = i
@@ -42,7 +41,4 @@ export class SliderBrakeComponent implements OnInit {
   pedalFunc(event): void{
     this.pedalModeVal = event.target.checked;
   }
-
-
-
 }
