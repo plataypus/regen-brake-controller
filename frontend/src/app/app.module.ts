@@ -8,6 +8,8 @@ import { SliderBrakeComponent } from './components/slider-brake/slider-brake.com
 import { RegenControlComponent } from './components/regen-control/regen-control.component';
 import { ManualControlComponent } from './components/manual-control/manual-control.component';
 import { PreviewComponent } from './components/preview/preview.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { PreviewComponent } from './components/preview/preview.component';
     SliderBrakeComponent,
     RegenControlComponent,
     ManualControlComponent,
-    PreviewComponent
+    PreviewComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
