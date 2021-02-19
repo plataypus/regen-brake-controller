@@ -7,6 +7,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { SliderBrakeComponent } from './components/slider-brake/slider-brake.component';
 import { RegenControlComponent } from './components/regen-control/regen-control.component';
 import { ManualControlComponent } from './components/manual-control/manual-control.component';
+import { PreviewComponent } from './components/preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ManualControlComponent } from './components/manual-control/manual-contr
     SliderComponent,
     SliderBrakeComponent,
     RegenControlComponent,
-    ManualControlComponent
+    ManualControlComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

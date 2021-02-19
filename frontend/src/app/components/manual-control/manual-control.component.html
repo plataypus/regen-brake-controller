@@ -1,4 +1,4 @@
-<app-slider label='Brake torque' id='torque' max={{20}} [unit]="'Nm'" (sliderEvent)="torqeUpdate($event)"></app-slider>
+<app-slider label='Brake torque' id='torque' [min]='1' [max]='20' [unit]="'Nm'" (sliderEvent)="torqeUpdate($event)"></app-slider>
 <app-slider label='Ramp time' id='ramp-time' [isDisabled]="!isRamp" [min]='1' [max]='10' [unit]="'sec'" (sliderEvent)="timeUpdate($event)"></app-slider>
 
 <input type="checkbox" id='ramp' name='ramp' (input)="rampToggle($event)"/>
