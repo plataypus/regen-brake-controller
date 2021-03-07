@@ -14,7 +14,6 @@ wss.on("connection", function connection(ws) {
 	ws.on("message", (message) => {
 		// parsed incoming data from the clients
 		const { eventType, data } = JSON.parse(message);
-
 		// //actual relay logic
 		// if (eventType === 'connection'){
 		// 	ws.clientType = data.clientType;
@@ -43,6 +42,7 @@ wss.on("connection", function connection(ws) {
 			// Initial connection
 			case "connection":
 				ws.clientType = data.clientType;
+				console.log(`Connected to ${ws.clientType}`);
 				ws.send(JSON.stringify({ eventType: "init" }));
 				return;
 			case "control":
