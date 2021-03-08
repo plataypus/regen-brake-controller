@@ -9,8 +9,8 @@ import {BehaviorSubject } from 'rxjs'
 export class WebsocketService {
   websocket: WebSocket;
   private data: any = {}
-  private dataSub = new BehaviorSubject<any>(this.data);
-  public serverMessage = this.dataSub.asObservable() //call this to receive message from server
+  private stateSub = new BehaviorSubject<any>(this.data);
+  public stateUpdate = this.stateSub.asObservable() //call this to receive message from server
 
   constructor() { }
 
@@ -27,6 +27,10 @@ export class WebsocketService {
       switch (eventType){
         case 'init':
           this.websocket.send(JSON.stringify({eventType: 'message', data:'hello'}))
+          return
+        case 'stateUpdate':
+          this.stateSub.next(data)
+          return
       }
     }
 
