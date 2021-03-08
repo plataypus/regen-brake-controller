@@ -1,7 +1,7 @@
 <!-- <h1>Predicted Behavior</h1> -->
 <!-- <h2>Inputs:</h2> -->
 <section class="inputs">
-    <app-slider [label]="'Brake torque'" [id]="'torque'" [unit]="'Nm'" [sliderValue]="brakeTorque" (sliderEvent)="brakeTorque=$event" [min]="1" [max]="50"></app-slider>
+    <app-slider [label]="'Brake torque'" [id]="'torque'" [unit]="'Nm'" [sliderValue]="brakeTorque" (sliderEvent)="brakeTorque=$event" [min]="1" [max]="50" (input)="computeGraphData()"></app-slider>
     <!-- <label for='track-length'>Track Length (m):</label>
     <input type="number" id="track-length" min='1' [(ngModel)]="trackLength"/><br> -->
     <!-- <section class="num-input">
@@ -11,12 +11,12 @@
 
     <section class="num-input">
         <label for='speed'>Brake speed (m/s):</label>
-        <input type="number" id="speed" [(ngModel)]="brakeSpeed" [min]='1' (input)="speedChange()"/>
+        <input type="number" id="speed" [(ngModel)]="brakeSpeed" [min]='1' [max]="14"(input)="speedChange()"/>
     </section>
 
     <section class="num-input">
         <label for='accel' >Acceleration (m/s<sup style="font-size:0.5rem">2</sup>):</label>
-        <input type="number" id="accel" [(ngModel)]="acceleration" [step]="0.5" [min]='minAcceleration'/>
+        <input type="number" id="accel" [(ngModel)]="acceleration" [step]="0.5" [min]='minAcceleration' (input)="computeGraphData()"/>
     </section>
 </section>
 
@@ -33,7 +33,7 @@
     <p>Brake Distance: </p>
     <p>Brake Time: </p>
     <p>Generated Energy: </p>
-    <app-graph></app-graph>
+    <app-graph [dataList]="graphData" [settings]="graphSettings"></app-graph>
     <section class="buttons">
         <button (click)="onStart()" [disabled]="state.started">Start</button>
         <button (click)="onPause()" [disabled]="!state.started || state.ended">{{state.paused === 1 ? "Resume":"Pause"}}</button>
