@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./regen-control.component.scss']
 })
 export class RegenControlComponent implements OnInit {
-  controlTypes: string[] = ['manual', 'real-time'];
+  controlTypes: string[] = ['animation','manual', 'real-time'];
   selectedControlType: string = this.controlTypes[0];
   constructor() { }
 

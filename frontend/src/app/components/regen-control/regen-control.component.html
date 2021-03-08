@@ -3,7 +3,9 @@
 <select id="control-type" name="control-type" (change)="selectUpdate($event)">
     <option *ngFor="let value of controlTypes" value="{{value}}">{{value}}</option>
 </select><br>
-<app-slider-brake *ngIf="selectedControlType === 'real-time'; else elseBlock"></app-slider-brake>
-<ng-template #elseBlock>
-    <app-manual-control></app-manual-control>
-</ng-template>
+<div class="content" [ngSwitch]="selectedControlType">
+    <app-slider-brake *ngSwitchCase="'real-time'"></app-slider-brake>
+    <app-manual-control *ngSwitchCase="'manual'"></app-manual-control>
+    <app-preview *ngSwitchCase="'animation'"></app-preview>
+</div>
+

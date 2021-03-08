@@ -1,13 +1,37 @@
-<h1>Predicted Behavior</h1>
-<h2>Inputs:</h2>
+<!-- <h1>Predicted Behavior</h1> -->
+<!-- <h2>Inputs:</h2> -->
 <section class="inputs">
-    <label for='track-length'>Track Length</label>
-    <input type="number" id="track-length" /><br>
-    <label for='speed'>Brake speed (m/s)</label>
-    <input type="number" id="speed" /><br>
+    <app-slider [label]="'Brake torque'" [id]="'torque'" [unit]="'Nm'" [sliderValue]="brakeTorque" (sliderEvent)="brakeTorque=$event" [min]="1"></app-slider>
+    <!-- <label for='track-length'>Track Length (m):</label>
+    <input type="number" id="track-length" min='1' [(ngModel)]="trackLength"/><br> -->
+    <section class="num-input">
+        <label for='speed' min='1'>Brake speed (m/s):</label>
+        <input type="number" id="speed" [(ngModel)]="brakeSpeed"/>
+    </section>
+
+    <section class="num-input">
+        <label for='speed' min='1'>Initial acceleration:</label>
+        <input type="number" id="speed" [(ngModel)]="acceleration"/>
+    </section>
 </section>
+
 <section class="outputs">
-    <h2>Output:</h2>
-    <small>* Behavior shown here are based on simulation model and may not reflect actual braking behavior</small>
+    <div class="oneline">
+        <h2>Output</h2>
+        <div class="tooltip">
+            <div class="content">!</div>
+            <div class="tooltiptext">
+                Behavior shown here are estimates based on simulation model and may not reflect actual braking behavior
+            </div>
+        </div>
+    </div>
+    <p>Brake Distance: </p>
+    <p>Brake Time: </p>
+    <p>Generated Energy: </p>
     <app-graph></app-graph>
+    <section class="buttons">
+        <button (click)="onStart()">Start</button>
+        <button (click)="onPause()" disabled>Pause</button>
+        <button (click)="onReset()">Reset</button>
+    </section>
 </section>

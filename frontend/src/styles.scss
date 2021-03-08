@@ -47,3 +47,17 @@ $grey: #b8b8b8;
 //   border-radius: 2.6px;
 //   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 // }
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #0057d8;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #5999f8;
+    cursor: default;
+  }
+}

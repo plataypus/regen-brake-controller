@@ -12,8 +12,9 @@ export class SliderComponent implements OnInit {
   @Input() min: number = 0;
   @Input() max: number = 100;
   @Input() unit: string = '';
+  
   @Output() sliderEvent: EventEmitter<number> = new EventEmitter<number>();
-  sliderValue: number = 0;
+  @Input() sliderValue: number = 0;
 
   constructor() { }
 
@@ -22,11 +23,11 @@ export class SliderComponent implements OnInit {
   }
 
   slide(event): void {
-    this.updateSlider(parseInt(event.target.value));
+    this.updateSlider(parseInt(event.target.value))
   }
 
   updateSlider(value: number): void{
     this.sliderValue = value
-    this.sliderEvent.emit(value)
+    this.sliderEvent.emit(this.sliderValue)
   }
 }

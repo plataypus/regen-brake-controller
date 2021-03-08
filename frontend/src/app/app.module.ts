@@ -10,6 +10,7 @@ import { ManualControlComponent } from './components/manual-control/manual-contr
 import { PreviewComponent } from './components/preview/preview.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { ChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ChartsModule } from 'ng2-charts';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

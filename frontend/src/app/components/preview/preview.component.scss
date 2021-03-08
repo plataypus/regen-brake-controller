@@ -1,8 +1,8 @@
-:host {
-  padding: 30px 40px;
-  border: 1px solid #ccc;
-  width: 300px;
-}
+// :host {
+// padding: 30px 40px;
+// border: 1px solid #ccc;
+// width: 300px;
+// }
 
 h1 {
   font-size: 1.25rem;
@@ -15,6 +15,15 @@ h2 {
   margin-bottom: 0.75rem;
 }
 
+label {
+  font-size: 0.9rem;
+}
+
+p {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
 small {
   opacity: 0.5;
   line-height: 80%;
@@ -24,6 +33,88 @@ small {
   margin-bottom: 1rem;
 }
 
+.num-input {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  input {
+    width: 20%;
+    margin: 0.25rem 0;
+    font-size: 0.8rem;
+  }
+}
+
 canvas {
   margin-top: 1rem;
+}
+
+input {
+  margin-top: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #0057d8;
+  font-size: 11px;
+  position: relative;
+
+  .content {
+    user-select: none;
+  }
+
+  .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    // top: -5px;
+    left: 130%;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      right: 100%; /* To the left of the tooltip */
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent black transparent transparent;
+    }
+  }
+
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
+
+.oneline {
+  h2 {
+    margin: 0;
+  }
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
 }

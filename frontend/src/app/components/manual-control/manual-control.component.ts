@@ -8,7 +8,7 @@ import {WebsocketService} from '../../services/websocket.service';
 })
 export class ManualControlComponent implements OnInit {
   isRamp: boolean = false;
-  torque: number = 0;
+  torque: number = 1;
   time: number = 1;
 
   constructor(private wsService: WebsocketService) { }
@@ -25,12 +25,9 @@ export class ManualControlComponent implements OnInit {
   }
 
   torqeUpdate(value: number): void{
-    console.log(typeof value)
     this.torque = value;
   }
   timeUpdate(value: number): void{
-    console.log(typeof value)
     this.time = value;
-    console.log(this.time)
   }
 }
