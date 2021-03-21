@@ -57,7 +57,7 @@ export class PreviewComponent implements OnInit, OnChanges {
   onStart(): void {
     this.wsService.control({
       command: "start",
-      params: {
+      param: {
         brakeTorque: this.brakeTorque, 
         brakeSpeed: this.brakeSpeed,
         acceleration: this.acceleration,
